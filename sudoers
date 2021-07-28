@@ -1,0 +1,43 @@
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+
+# Host alias specification
+
+# User alias specification
+User_Alias	 MAILADMIN = joe, linda	
+User_Alias       WEBADMIN = joe
+User_Alias	 POWERUSER = tracy 
+User_Alias	 MAILOTHER = linda
+
+# Cmnd alias specification
+Cmnd_Alias	MANAGEMAIL = /bin/systemctl restart postfix
+Cmnd_Alias	MANAGEWEB = /bin/systemctl start apache2, /bin/systemctl stop apache2, /bin/systemctl restart apache2  
+Cmnd_Alias	WEBSOCKETS = /usr/bin/lsof -i -n, /usr/bin/ss -tulpn
+Cmnd_Alias	MANAGEUSER = /usr/bin/passwd [A-Za-z]*, !/usr/bin/passwd *root*, /usr/bin/chage *, /usr/sbin/useradd -m -d /home/[A-Za-z]* [A-Za-z]*
+Cmnd_Alias	STOPSTARTMAIL = /bin/systemctl stop postfix, /bin/systemctl start postfix
+
+# User privilege specification
+root	ALL=(ALL:ALL) ALL
+
+# Members of the admin group may gain root privileges
+%admin ALL=(ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo	ALL=(ALL:ALL) ALL
+
+# See sudoers(5) for more information on "#include" directives:
+MAILADMIN ALL = MANAGEMAIL
+WEBADMIN ALL = MANAGEWEB
+POWERUSER ALL = MANAGEUSER
+MAILOTHER ALL = MANAGEMAIL, STOPSTARTMAIL
+
+#includedir /etc/sudoers.d
