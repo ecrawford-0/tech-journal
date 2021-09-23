@@ -54,3 +54,11 @@ fi
 rm -rf sanitized_target_file.txt
 rm -rf sanitized_port_file.txt
 rm -rf result.txt
+
+# other websites which were referenced 
+# https://www.shellhacks.com/regex-find-ip-addresses-file-grep/
+# https://www.cyberciti.biz/faq/unix-howto-read-line-by-line-from-file/
+# https://linuxhint.com/read_file_line_by_line_bash/
+# https://acloudguru.com/blog/engineering/conditions-in-bash-scripting-if-statements
+# https://linuxhint.com/length_of_string_bash/
+# https://www.golinuxcloud.com/check-if-string-contains-numbers-shell-script/
