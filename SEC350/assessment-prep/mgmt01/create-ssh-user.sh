@@ -25,3 +25,5 @@ sudo chmod 600 /home/$user/.ssh/authorized_keys
 
 # change the owner to be for the user created
 sudo chown -R $user:$user /home/$user/.ssh
+
+echo "DONE: remeber to do a chmod +x this file, and to run use command bash create-ssh-user.sh" 
