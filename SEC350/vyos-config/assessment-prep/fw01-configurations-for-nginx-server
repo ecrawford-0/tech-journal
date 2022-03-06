@@ -1,0 +1,136 @@
+vyos@fw1-emily# sh firewall
+ name DMZ-TO-LAN {
+     default-action drop
+     enable-default-log
+     rule 1 {
+         action accept
+         state {
+             established enable
+         }
+     }
+     rule 10 {
+         action accept
+         description "Allow LAN Access to DMZ"
+         destination {
+             port 1514
+         }
+         protocol udp
+     }
+     rule 30 {
+         action accept
+         description "Allow nginx01 to ping log01"
+         destination {
+             address 172.16.200.10
+         }
+         protocol icmp
+         source {
+             address 172.16.50.5
+         }
+     }
+ }
+ name DMZ-to-WAN {
+     default-action drop
+     enable-default-log
+     rule 1 {
+         action accept
+         state {
+             established enable
+         }
+     }
+     rule 10 {
+         action accept
+         description "Allow web01 NTP requests"
+         destination {
+             port 123
+         }
+         protocol udp
+         source {
+             address 172.16.50.3
+         }
+     }
+     rule 20 {
+         action accept
+         description "Allow nginx01 internet connectivity"
+         source {
+             address 172.16.50.5
+         }
+     }
+ }
+ name LAN-TO-DMZ {
+     default-action drop
+     enable-default-log
+     rule 10 {
+         action accept
+         description "Allow LAN access to nginx01"
+         destination {
+             address 172.16.50.5
+             port 80
+         }
+         protocol tcp
+     }
+     rule 20 {
+         action accept
+         description "Allow mgmt01 access to nginx01"
+         destination {
+             address 172.16.50.5
+             port 22
+         }
+         protocol tcp
+         source {
+             address 172.16.200.11
+         }
+     }
+     rule 30 {
+         action accept
+         description "allow ping from nginx -> log01"
+         destination {
+             address 172.16.50.5
+         }
+         protocol icmp
+         source {
+             address 172.16.200.10
+         }
+     }
+ }
+ name LAN-TO-WAN {
+     default-action drop
+     enable-default-log
+     rule 1 {
+         action accept
+     }
+ }
+ name WAN-TO-LAN {
+     default-action drop
+     enable-default-log
+     rule 1 {
+         action accept
+     }
+ }
+ name WAN-to-DMZ {
+     default-action drop
+     enable-default-log
+     rule 10 {
+         action accept
+         description "Allow WAN Access to Web01 HTTP"
+         destination {
+             address 172.16.50.3
+             port 80
+         }
+         protocol tcp
+     }
+     rule 20 {
+         action accept
+         description "allow established connections"
+         state {
+             established enable
+         }
+     }
+     rule 30 {
+         action accept
+         description "Allow ssh into jump"
+         destination {
+             port 22
+         }
+         protocol tcp
+     }
+ }
