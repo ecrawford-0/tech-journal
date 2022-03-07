@@ -4,7 +4,7 @@
 sudo cp hosts /etc/hosts
 
 # copy the cloud.cfg file
-sudo cp cloud.cfg /etc/cloud.cfg
+sudo cp cloud.cfg /etc/cloud/cloud.cfg
 
 # set the hostname
 sudo hostnamectl set-hostname nginx01-emily
