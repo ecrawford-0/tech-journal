@@ -1,0 +1,105 @@
+(lfs chroot) root:/sources/gcc-12.2.0/build# ../contrib/test_summary                 
+cat <<'EOF' |
+LAST_UPDATED: Obtained from git: releases/gcc-12.2.0 revision 2ee5e4300186a92ad73f1a1a64cb918dc76c8d67
+
+Native configuration is x86_64-pc-linux-gnu
+
+		=== g++ tests ===
+
+
+Running target unix
+XPASS: c-c++-common/goacc/kernels-decompose-pr100400-1-2.c  -std=c++98 (internal compiler error)
+FAIL: c-c++-common/goacc/kernels-decompose-pr100400-1-2.c  -std=c++98 (test for excess errors)
+XPASS: c-c++-common/goacc/kernels-decompose-pr100400-1-2.c  -std=c++14 (internal compiler error)
+FAIL: c-c++-common/goacc/kernels-decompose-pr100400-1-2.c  -std=c++14 (test for excess errors)
+XPASS: c-c++-common/goacc/kernels-decompose-pr100400-1-2.c  -std=c++17 (internal compiler error)
+FAIL: c-c++-common/goacc/kernels-decompose-pr100400-1-2.c  -std=c++17 (test for excess errors)
+XPASS: c-c++-common/goacc/kernels-decompose-pr100400-1-2.c  -std=c++20 (internal compiler error)
+FAIL: c-c++-common/goacc/kernels-decompose-pr100400-1-2.c  -std=c++20 (test for excess errors)
+
+		=== g++ Summary ===
+
+# of expected passes		229940
+# of unexpected failures	4
+# of unexpected successes	4
+# of expected failures		2069
+# of unsupported tests		9913
+/sources/gcc-12.2.0/build/gcc/xg++  version 12.2.0 (GCC) 
+
+		=== gcc tests ===
+
+
+Running target unix
+
+		=== gcc Summary ===
+
+# of expected passes		176402
+# of expected failures		1382
+# of unsupported tests		2369
+/sources/gcc-12.2.0/build/gcc/xgcc  version 12.2.0 (GCC) 
+
+		=== libatomic tests ===
+
+
+Running target unix
+
+		=== libatomic Summary ===
+
+# of expected passes		54
+		=== libgomp tests ===
+
+
+Running target unix
+
+		=== libgomp Summary ===
+
+# of expected passes		4879
+# of expected failures		32
+# of unsupported tests		323
+		=== libitm tests ===
+
+
+Running target unix
+
+		=== libitm Summary ===
+
+# of expected passes		44
+# of expected failures		3
+# of unsupported tests		1
+		=== libstdc++ tests ===
+
+
+Running target unix
+WARNING: program timed out
+FAIL: tr1/5_numerical_facilities/random/minstd_rand0.cc (test for excess errors)
+UNRESOLVED: tr1/5_numerical_facilities/random/minstd_rand0.cc compilation failed to produce executable
+WARNING: program timed out
+FAIL: tr1/6_containers/unordered_multiset/find/multiset1.cc (test for excess errors)
+UNRESOLVED: tr1/6_containers/unordered_multiset/find/multiset1.cc compilation failed to produce executable
+
+		=== libstdc++ Summary ===
+
+# of expected passes		15245
+# of unexpected failures	2
+# of expected failures		95
+# of unresolved testcases	2
+# of unsupported tests		374
+
+Compiler version: 12.2.0 (GCC) 
+Platform: x86_64-pc-linux-gnu
+configure flags: --prefix=/usr LD=ld --enable-languages=c,c++ --disable-multilib --disable-bootstrap --with-system-zlib
+EOF
+Mail -s "Results for 12.2.0 (GCC) testsuite on x86_64-pc-linux-gnu" gcc-testresults@gcc.gnu.org &&
+mv /sources/gcc-12.2.0/build/./gcc/testsuite/g++/g++.sum /sources/gcc-12.2.0/build/./gcc/testsuite/g++/g++.sum.sent &&
+mv /sources/gcc-12.2.0/build/./gcc/testsuite/gcc/gcc.sum /sources/gcc-12.2.0/build/./gcc/testsuite/gcc/gcc.sum.sent &&
+mv /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libatomic/testsuite/libatomic.sum /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libatomic/testsuite/libatomic.sum.sent &&
+mv /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libgomp/testsuite/libgomp.sum /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libgomp/testsuite/libgomp.sum.sent &&
+mv /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libitm/testsuite/libitm.sum /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libitm/testsuite/libitm.sum.sent &&
+mv /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libstdc++-v3/testsuite/libstdc++.sum /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libstdc++-v3/testsuite/libstdc++.sum.sent &&
+mv /sources/gcc-12.2.0/build/./gcc/testsuite/g++/g++.log /sources/gcc-12.2.0/build/./gcc/testsuite/g++/g++.log.sent &&
+mv /sources/gcc-12.2.0/build/./gcc/testsuite/gcc/gcc.log /sources/gcc-12.2.0/build/./gcc/testsuite/gcc/gcc.log.sent &&
+mv /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libatomic/testsuite/libatomic.log /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libatomic/testsuite/libatomic.log.sent &&
+mv /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libgomp/testsuite/libgomp.log /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libgomp/testsuite/libgomp.log.sent &&
+mv /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libitm/testsuite/libitm.log /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libitm/testsuite/libitm.log.sent &&
+mv /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libstdc++-v3/testsuite/libstdc++.log /sources/gcc-12.2.0/build/./x86_64-pc-linux-gnu/libstdc++-v3/testsuite/libstdc++.log.sent &&
+true
